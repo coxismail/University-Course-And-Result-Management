@@ -1,0 +1,167 @@
+﻿@using UniversityManagementApp.Models
+
+@{
+    ViewBag.Title = "CourseStatics";
+    
+    List<Course> courseslist = ViewBag.message;
+   
+}
+
+
+
+@*<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>University Management System</title>
+    <link href="~/Content/font-awesome.css" rel="stylesheet" />
+    <link href="~/Content/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+
+    <style type="text/css">
+        span.error {
+            color: red;
+            position: absolute;
+            left: 97%;
+            top: 5px;
+            padding-left: 10px;
+            background-color: whitesmoke;
+            width: 73%;
+        }
+    </style>
+</head>
+<body>*@
+
+<div class="card shadow p-1 text-white  bg-dark col-md-10 mx-auto rounded">
+    @*Every title of Page will shown using following Div*@
+    <div class="card-header text-center bg-light text-primary">
+        <h2> All Course</h2>
+    </div>
+
+    @*User will input all kind off data using this section*@
+    <br/>
+    <div class="mt-1 col-md-12 text-xl-right">
+        <a class="btn  btn-outline-info" href="~/Course/Course" role="button">Save a course</a>
+    </div>
+    <div class="card-body">
+        @*@if (message != null)
+            {
+                if (message.Contains("Successful"))
+                {
+                    <div class="alert alert-success text-center" role="alert">
+                        <i class="fa fa-check-circle" aria-hidden="true"></i> @message
+                    </div>
+                }
+                else
+                {
+                    <div class="alert alert-danger text-center" role="alert">
+                        <i class="fa fa-times" aria-hidden="true"></i> @message
+                    </div>
+                }
+
+
+            }*@
+        @using (Html.BeginForm())
+        {
+                @*Department list*@
+            <div class="input-group mt-2 mx-auto col-md-5">
+                <div class="input-group-prepend">
+                    <label class="input-group-text" for="DepartmentCode">Department</label>
+                </div>
+                @Html.DropDownList("DepartmentCode", new SelectList(ViewBag.Departments, "value", "text"), new {@class = "form-control"})
+                @*@Html.ValidationMessageFor(x => x.DepartmentCode, null, new {@class = "error", @id = "DepartmentCode-error"})*@
+            </div>
+
+      }
+
+    </div>
+
+
+    @*Data Table*@
+    <table class="table table-hover col-md-7 mx-auto">
+        <thead>
+        <tr>
+            <th scope="col">Code</th>
+            <th scope="col">Name</th>
+            <th scope="col">Semester</th>
+            <th scope="col">AssignTo</th>
+
+        </tr>
+
+@*@foreach (Course course in courseslist)
+{
+      <tr>
+            <td scope="col">@course.Code</td>
+            <td scope="col">@course.Name</td>
+            <td scope="col">@course.Semester</td>
+            <td scope="col">@course.AssignTo</td>
+
+        </tr>
+}*@
+
+
+
+
+
+        </thead>
+        <tbody id="DataTableBody"></tbody>
+   </table>
+
+
+
+</div>
+
+
+
+
+@*<script src="~/Scripts/jquery-3.0.0.min.js"></script>
+    <script src="~/Scripts/popper.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>*@
+
+
+
+
+@section scripts
+{
+
+<script>
+
+            $(document).ready(function () {
+             
+      
+        $("#DepartmentCode").change(function () {
+            
+            var DepartmentCode = $("#DepartmentCode").val();
+            var json = { DepartmentCode: DepartmentCode };
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("ViewCourseStatics","CourseStatics")',
+                    contentType: "application/json; charset=utf-8",
+                    cache: false,
+                    async:false,
+                    data: JSON.stringify(json),
+                    success: function (data) {
+                       
+                        $("#DataTableBody").empty();
+                        $.each(data, function (key, value) {
+                    
+                            $("#DataTableBody").append('<tr><td scope="col">' + value.Code + '</td>  <td scope="col">' + value.Name + '</td>  <td scope="col">' + value.Semester + '</td>  <td scope="col">' + value.AssignTo + '</td></tr>');
+                        });
+
+                    }
+                });
+        });
+        
+        });
+        </script>
+ 
+}
+
+
+
+@*</body>
+</html>*@

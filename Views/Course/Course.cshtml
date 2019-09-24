@@ -1,0 +1,149 @@
+﻿@using System.ComponentModel
+@using UniversityManagementApp.Models
+@model Course
+@{
+    ViewBag.Title = "Course";
+  
+
+  
+    string message = ViewBag.message;
+}
+
+
+
+
+@*<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>University Management System</title>
+    <link href="~/Content/font-awesome.css" rel="stylesheet" />
+    <link href="~/Content/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+
+    <style type="text/css">
+        span.error {
+            color: red;
+            position: absolute;
+            left: 97%;
+            top: 5px;
+            padding-left: 10px;
+            background-color: whitesmoke;
+            width: 73%;
+        }
+    </style>
+</head>
+<body>*@
+
+    <div class="card shadow p-1 text-white  bg-dark col-md-10 mx-auto rounded">
+        @*Every title of Page will shown using following Div*@
+        <div class="card-header text-center bg-light text-primary">
+            <h2> Save Course</h2>
+        </div>
+
+        @*User will input all kind off data using this section*@
+        <br />
+        <div class="mt-1 col-md-12 text-xl-right">
+            <a class="btn  btn-outline-info" href="~/CourseStatics/CourseStatics" role="button">Show All course</a>
+        </div>
+        <div class="card-body">
+            @if (message != null)
+            {
+                if (message.Contains("Successful"))
+                {
+                    <div class="alert alert-success text-center" role="alert">
+                        <i class="fa fa-check-circle" aria-hidden="true"></i>  @message
+                    </div>
+                }
+                else
+                {
+                    <div class="alert alert-danger text-center" role="alert">
+                        <i class="fa fa-times" aria-hidden="true"></i>   @message
+                    </div>
+                }
+
+
+            }
+            @using (Html.BeginForm())
+            {
+                @*Code field*@
+                <div class="input-group mx-auto col-md-5">
+                    <div class="input-group-prepend">
+                        <label for="Code" class="input-group-text">Code&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                    </div>
+                    @Html.TextBoxFor(x => x.Code, null, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(x => x.Code, null, new { @class = "error", @id = "Code-error" })
+                </div>
+
+
+                @*Name field*@
+                <div class="input-group mt-2 mx-auto col-md-5">
+                    <div class="input-group-prepend">
+                        <label for="Name" class="input-group-text">Name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                    </div>
+                    @Html.TextBoxFor(x => x.Name, null, new { @class = "form-control" })
+                    @*@Html.LabelFor(x=>x.Name,"",new {@class="error", @id="Code-error"})*@
+                    @Html.ValidationMessageFor(x => x.Name, null, new { @class = "error", @id = "Name-error" })
+
+                </div>
+
+                @*Credit field*@
+                <div class="input-group mt-2 mx-auto col-md-5">
+                    <div class="input-group-prepend">
+                        <label for="Credit" class="input-group-text">Credit&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                    </div>
+                    @Html.TextBoxFor(x => x.Credit, null, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(x => x.Credit, null, new { @class = "error", @id = "Credit-error" })
+                </div>
+                @*Description field*@
+                <div class="input-group mt-2 mx-auto col-md-5">
+                    <div class="input-group-prepend">
+                        <label for="Description" class="input-group-text">Description</label>
+                    </div>
+                    @Html.TextAreaFor(x => x.Description, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(x => x.Description, null, new { @class = "error", @id = "Description-error" })
+                </div>
+
+
+                @*Department list*@
+                <div class="input-group mt-2 mx-auto col-md-5">
+                    <div class="input-group-prepend">
+                        <label class="input-group-text" for="DepartmentCode">Department</label>
+                    </div>
+                    @Html.DropDownListFor(x => x.DepartmentCode, new SelectList(ViewBag.Departments, "value", "text"), new {@class="form-control"})
+                    @Html.ValidationMessageFor(x => x.DepartmentCode, null, new { @class = "error", @id = "DepartmentCode-error" })
+                </div>
+
+
+                @*Sameester list*@
+
+                <div class="input-group mt-2 mx-auto col-md-5">
+                    <div class="input-group-prepend">
+                        <label class="input-group-text" for="Semester">Semester&nbsp;&nbsp;</label>
+                    </div>
+
+
+                    @Html.DropDownListFor(x => x.Semester, new SelectList(ViewBag.SemesterList, "Value", "Text"), new {@class="form-control"})
+                    @Html.ValidationMessageFor(x => x.Semester, null, new { @class = "error", @id = "Semester-error" })
+                </div>
+
+
+
+                <div class="mt-2 mx-auto col-md-5 text-xl-right">
+                    <input class="btn btn-primary mt-2 mr-2" type="submit" value="Submit">
+                </div>
+            }
+
+        </div>
+
+    </div>
+
+    @*<script src="~/Scripts/jquery-3.0.0.min.js"></script>
+    <script src="~/Scripts/popper.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+</body>
+</html>*@

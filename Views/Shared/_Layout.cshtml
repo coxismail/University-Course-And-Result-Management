@@ -1,0 +1,128 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    <link href="~/Content/font-awesome.css" rel="stylesheet" />
+    <link href="~/Content/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet"/>
+    <link href="~/Content/CustomCss/Menu.css" rel="stylesheet" />
+
+    <style type="text/css">
+        span.error {
+            color: red;
+            position: absolute;
+            left: 97%;
+            top: 5px;
+            padding-left: 10px;
+            background-color: whitesmoke;
+            width: 73%;
+        }
+        .footer_area {
+            height: 40px;
+            background-color: burlywood;
+            position: fixed;
+            clear: both;
+            bottom: 2px;
+            left: 5px;
+            right: 5px;
+        }
+
+            .footer_area p {
+                text-align: center;
+            }
+
+
+    </style>
+    @Scripts.Render("~/bundles/modernizr")
+    @RenderSection("styles", required: false)
+
+    <script type="text/javascript">
+        setTimeout(function () {
+            $('.alert').fadeOut(2000);
+        }, 1000); // <-- time in milliseconds
+
+    
+
+    </script>
+</head>
+<body>
+
+
+
+
+
+
+    <nav class="main-menu fixed-top">
+        <a href="#" class="bar">Menu <i class="fa fa-list" aria-hidden="true"></i></a>
+        <ul>
+            <li>@Html.ActionLink("Home", "Index", "Home")</li>
+            <li>
+                <a href="#">Department</a>
+                <ul>
+                    <li>@Html.ActionLink("Save A Department", "Department", "Department")</li>
+                    <li>@Html.ActionLink("Show All Department", "AllDepartments", "Department")</li>
+                </ul>
+
+            </li>
+            <li><a href="#">Course</a>
+                <ul>
+                    <li>@Html.ActionLink("Save", "Course", "Course")</li>
+                    <li>@Html.ActionLink("View Course", "CourseStatics", "CourseStatics")</li>
+                    <li>@Html.ActionLink("Assign Course", "AssignCourse", "AssignCourse")</li>
+                    <li>@Html.ActionLink("Unassign all Course", "UnassignCourse", "Course")</li>
+                </ul>
+            
+            </li>
+        
+            
+
+            <li>@Html.ActionLink("Teacher", "Teacher", "Teacher")</li>
+
+            <li><a href="#">Student</a>
+                <ul>
+                    <li>@Html.ActionLink("Student", "RegisterStudent", "Student")</li>
+                    <li>@Html.ActionLink("Enroll", "EnrollCourse", "Enroll")</li>
+                    <li>@Html.ActionLink("Save Result", "SaveStudentResult", "Result")</li>
+                    <li>@Html.ActionLink("View Result", "ViewResult", "Result")</li>
+                </ul>
+            
+            </li>
+
+            <li>
+                <a href="#">Allocation </a>
+                <ul>
+                    <li>@Html.ActionLink("Allocation", "RoomAllocation", "Allocation")</li>
+                    <li>@Html.ActionLink("View Shedule", "ViewRoomAllocation", "Allocation")</li>
+                    <li>@Html.ActionLink("Un Allocate All", "UnAllocate", "Allocation")</li>
+
+                </ul>
+            </li>
+        </ul>
+    </nav>
+
+    
+   
+    <div class="container body-content">
+        @RenderBody()
+     
+
+       
+        <footer class="footer_area">
+            <p>&copy; @DateTime.Now.Year -Developed By: <a href="http://www.facebook.com/coxismail.bd">Mohammad Ismail</a> </p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    <script src="~/Scripts/jquery-3.0.0.min.js"></script>
+    <script src="~/Scripts/popper.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/Scripts/CustomJs/Menu.js"></script>
+    @RenderSection("scripts", required: false)
+</body>
+</html>

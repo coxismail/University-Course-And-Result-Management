@@ -1,0 +1,163 @@
+﻿@using UniversityManagementApp.Models
+@model Teacher
+@{
+    ViewBag.Title = "Teacher";
+
+
+
+    string message = ViewBag.message;
+}
+
+
+
+
+@*<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>University Management System</title>
+    <link href="~/Content/font-awesome.css" rel="stylesheet" />
+    <link href="~/Content/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+
+    <style type="text/css">
+        span.error {
+            color: red;
+            position: absolute;
+            left: 97%;
+            top: 5px;
+            padding-left: 10px;
+            background-color: whitesmoke;
+            width: 73%;
+        }
+    </style>
+</head>
+<body>*@
+
+    <div class="card shadow p-1 text-white  bg-dark col-md-10 mx-auto rounded">
+        @*Every title of Page will shown using following Div*@
+        <div class="card-header text-center bg-light text-primary">
+            <h2> Save Teacher Information</h2>
+        </div>
+
+        @*User will input all kind off data using this section*@
+        <br />
+        <div class="mt-1 col-md-12 text-xl-right">
+            <a class="btn  btn-outline-info" href="#" role="button">Show</a>
+        </div>
+        <div class="card-body">
+            @if (message != null)
+            {
+                if (message.Contains("Successful"))
+                {
+                    <div class="alert alert-success text-center" role="alert">
+                        <i class="fa fa-check-circle" aria-hidden="true"></i>  @message
+                    </div>
+                }
+                else
+                {
+                    <div class="alert alert-danger text-center" role="alert">
+                        <i class="fa fa-times" aria-hidden="true"></i>   @message
+                    </div>
+                }
+
+
+            }
+            @using (Html.BeginForm())
+            {
+                @*Name field*@
+                <div class="input-group mx-auto col-md-5">
+                    <div class="input-group-prepend">
+                        <label for="Name" class="input-group-text">Name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                    </div>
+                    @Html.TextBoxFor(x => x.Name, null, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(x => x.Name, null, new { @class = "error", @id = "Name-error" })
+                </div>
+                @*Address field*@
+                <div class="input-group mt-2 mx-auto col-md-5">
+                    <div class="input-group-prepend">
+                        <label for="Address" class="input-group-text">Address&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                    </div>
+                    @Html.TextAreaFor(x => x.Address, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(x => x.Address, null, new { @class = "error", @id = "Address-error" })
+                </div>
+
+                @*Email field*@
+                <div class="input-group mt-2 mx-auto col-md-5">
+                    <div class="input-group-prepend">
+                        <label for="Email" class="input-group-text">Email&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                    </div>
+                    @Html.TextBoxFor(x => x.Email, null, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(x => x.Email, null, new { @class = "error", @id = "Email-error" })
+
+                </div>
+
+                @*Contact field*@
+                <div class="input-group mt-2 mx-auto col-md-5">
+                    <div class="input-group-prepend">
+                        <label for="Contact" class="input-group-text">Contact No</label>
+                    </div>
+                    @Html.TextBoxFor(x => x.Contact, null, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(x => x.Contact, null, new { @class = "error", @id = "Contact-error" })
+                </div>
+
+
+
+                @*Department list*@
+                <div class="input-group mt-2 mx-auto col-md-5">
+                    <div class="input-group-prepend">
+                        <label class="input-group-text" for="DepartmentCode">Department</label>
+                    </div>
+
+                    @Html.DropDownListFor(x => x.DepartmentCode, new SelectList(ViewBag.Departments, "value", "text"), new { @class = "form-control" })
+                    @Html.ValidationMessageFor(x => x.DepartmentCode, null, new { @class = "error", @id = "DepartmentCode-error" })
+                </div>
+
+
+                @*Sameester list*@
+
+                <div class="input-group mt-2 mx-auto col-md-5">
+                    <div class="input-group-prepend">
+                        <label class="input-group-text" for="Designation">Designation</label>
+                    </div>
+
+
+
+                    @Html.DropDownListFor(x => x.Designation, new SelectList(ViewBag.AllDesignations, "value", "text"), new { @class = "form-control" })
+                    @Html.ValidationMessageFor(x => x.Designation, null, new { @class = "error", @id = "Designation-error" })
+                </div>
+
+
+
+
+                @*Credit to taken field*@
+                <div class="input-group mt-2 mx-auto col-md-5">
+                    <div class="input-group-prepend">
+                        <label for="CreditTobeTaken" class="input-group-text">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Credit</label>
+                    </div>
+
+                    @Html.TextBoxFor(x => x.CreditbeTaken, null, new { @placeholder = "To be taken by Teacher", @class = "form-control" })
+                    @Html.ValidationMessageFor(x => x.CreditbeTaken, null, new { @class = "error", @id = "CreditbeTaken-error" })
+                </div>
+
+
+                <div class="mt-2 mx-auto col-md-5 text-xl-right">
+                    <input class="btn btn-primary mt-2 mr-2" type="submit" value="Submit">
+                </div>
+            }
+
+        </div>
+
+    </div>
+
+    @*<script src="~/Scripts/jquery-3.0.0.min.js"></script>
+    <script src="~/Scripts/popper.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+</body>
+</html>*@
+
+
+

@@ -1,0 +1,88 @@
+D:\DotNet\Assignment\University Management Project\UniversityManagementApp\UniversityManagementApp\bin\UniversityManagementApp.dll.config
+D:\DotNet\Assignment\University Management Project\UniversityManagementApp\UniversityManagementApp\bin\UniversityManagementApp.dll
+D:\DotNet\Assignment\University Management Project\UniversityManagementApp\UniversityManagementApp\bin\UniversityManagementApp.pdb
+D:\DotNet\Assignment\University Management Project\UniversityManagementApp\UniversityManagementApp\bin\Antlr3.Runtime.dll
+D:\DotNet\Assignment\University Management Project\UniversityManagementApp\UniversityManagementApp\bin\Microsoft.Web.Infrastructure.dll
+D:\DotNet\Assignment\University Management Project\UniversityManagementApp\UniversityManagementApp\bin\Newtonsoft.Json.dll
+D:\DotNet\Assignment\University Management Project\UniversityManagementApp\UniversityManagementApp\bin\System.Web.Helpers.dll
+D:\DotNet\Assignment\University Management Project\UniversityManagementApp\UniversityManagementApp\bin\System.Web.Mvc.dll
+D:\DotNet\Assignment\University Management Project\UniversityManagementApp\UniversityManagementApp\bin\System.Web.Optimization.dll
+D:\DotNet\Assignment\University Management Project\UniversityManagementApp\UniversityManagementApp\bin\System.Web.Razor.dll
+D:\DotNet\Assignment\University Management Project\UniversityManagementApp\UniversityManagementApp\bin\System.Web.WebPages.Deployment.dll
+D:\DotNet\Assignment\University Management Project\UniversityManagementApp\UniversityManagementApp\bin\System.Web.WebPages.dll
+D:\DotNet\Assignment\University Management Project\UniversityManagementApp\UniversityManagementApp\bin\System.Web.WebPages.Razor.dll
+D:\DotNet\Assignment\University Management Project\UniversityManagementApp\UniversityManagementApp\bin\WebGrease.dll
+D:\DotNet\Assignment\University Management Project\UniversityManagementApp\UniversityManagementApp\bin\System.Web.Helpers.xml
+D:\DotNet\Assignment\University Management Project\UniversityManagementApp\UniversityManagementApp\bin\System.Web.Mvc.xml
+D:\DotNet\Assignment\University Management Project\UniversityManagementApp\UniversityManagementApp\bin\System.Web.Optimization.xml
+D:\DotNet\Assignment\University Management Project\UniversityManagementApp\UniversityManagementApp\bin\System.Web.Razor.xml
+D:\DotNet\Assignment\University Management Project\UniversityManagementApp\UniversityManagementApp\bin\System.Web.WebPages.xml
+D:\DotNet\Assignment\University Management Project\UniversityManagementApp\UniversityManagementApp\bin\System.Web.WebPages.Deployment.xml
+D:\DotNet\Assignment\University Management Project\UniversityManagementApp\UniversityManagementApp\bin\System.Web.WebPages.Razor.xml
+D:\DotNet\Assignment\University Management Project\UniversityManagementApp\UniversityManagementApp\bin\Newtonsoft.Json.xml
+D:\DotNet\Assignment\University Management Project\UniversityManagementApp\UniversityManagementApp\bin\Antlr3.Runtime.pdb
+D:\DotNet\Assignment\University Management Project\UniversityManagementApp\UniversityManagementApp\obj\Debug\UniversityManagementApp.dll
+D:\DotNet\Assignment\University Management Project\UniversityManagementApp\UniversityManagementApp\obj\Debug\UniversityManagementApp.pdb
+E:\Ismail 216218\2018.12.17\University Management Project\UniversityManagementApp\UniversityManagementApp\bin\UniversityManagementApp.dll.config
+E:\Ismail 216218\2018.12.17\University Management Project\UniversityManagementApp\UniversityManagementApp\bin\UniversityManagementApp.dll
+E:\Ismail 216218\2018.12.17\University Management Project\UniversityManagementApp\UniversityManagementApp\bin\UniversityManagementApp.pdb
+E:\Ismail 216218\2018.12.17\University Management Project\UniversityManagementApp\UniversityManagementApp\bin\Antlr3.Runtime.dll
+E:\Ismail 216218\2018.12.17\University Management Project\UniversityManagementApp\UniversityManagementApp\bin\Microsoft.Web.Infrastructure.dll
+E:\Ismail 216218\2018.12.17\University Management Project\UniversityManagementApp\UniversityManagementApp\bin\Newtonsoft.Json.dll
+E:\Ismail 216218\2018.12.17\University Management Project\UniversityManagementApp\UniversityManagementApp\bin\System.Web.Helpers.dll
+E:\Ismail 216218\2018.12.17\University Management Project\UniversityManagementApp\UniversityManagementApp\bin\System.Web.Mvc.dll
+E:\Ismail 216218\2018.12.17\University Management Project\UniversityManagementApp\UniversityManagementApp\bin\System.Web.Optimization.dll
+E:\Ismail 216218\2018.12.17\University Management Project\UniversityManagementApp\UniversityManagementApp\bin\System.Web.Razor.dll
+E:\Ismail 216218\2018.12.17\University Management Project\UniversityManagementApp\UniversityManagementApp\bin\System.Web.WebPages.Deployment.dll
+E:\Ismail 216218\2018.12.17\University Management Project\UniversityManagementApp\UniversityManagementApp\bin\System.Web.WebPages.dll
+E:\Ismail 216218\2018.12.17\University Management Project\UniversityManagementApp\UniversityManagementApp\bin\System.Web.WebPages.Razor.dll
+E:\Ismail 216218\2018.12.17\University Management Project\UniversityManagementApp\UniversityManagementApp\bin\WebGrease.dll
+E:\Ismail 216218\2018.12.17\University Management Project\UniversityManagementApp\UniversityManagementApp\bin\System.Web.Helpers.xml
+E:\Ismail 216218\2018.12.17\University Management Project\UniversityManagementApp\UniversityManagementApp\bin\System.Web.Mvc.xml
+E:\Ismail 216218\2018.12.17\University Management Project\UniversityManagementApp\UniversityManagementApp\bin\System.Web.Optimization.xml
+E:\Ismail 216218\2018.12.17\University Management Project\UniversityManagementApp\UniversityManagementApp\bin\System.Web.Razor.xml
+E:\Ismail 216218\2018.12.17\University Management Project\UniversityManagementApp\UniversityManagementApp\bin\System.Web.WebPages.xml
+E:\Ismail 216218\2018.12.17\University Management Project\UniversityManagementApp\UniversityManagementApp\bin\System.Web.WebPages.Deployment.xml
+E:\Ismail 216218\2018.12.17\University Management Project\UniversityManagementApp\UniversityManagementApp\bin\System.Web.WebPages.Razor.xml
+E:\Ismail 216218\2018.12.17\University Management Project\UniversityManagementApp\UniversityManagementApp\bin\Newtonsoft.Json.xml
+E:\Ismail 216218\2018.12.17\University Management Project\UniversityManagementApp\UniversityManagementApp\bin\Antlr3.Runtime.pdb
+E:\Ismail 216218\2018.12.17\University Management Project\UniversityManagementApp\UniversityManagementApp\obj\Debug\UniversityManagementApp.csprojResolveAssemblyReference.cache
+E:\Ismail 216218\2018.12.17\University Management Project\UniversityManagementApp\UniversityManagementApp\obj\Debug\UniversityManagementApp.dll
+E:\Ismail 216218\2018.12.17\University Management Project\UniversityManagementApp\UniversityManagementApp\obj\Debug\UniversityManagementApp.pdb
+D:\DotNet\Assignment\University Management Project\UniversityManagementApp\UniversityManagementApp\bin\Rotativa.Core.dll
+D:\DotNet\Assignment\University Management Project\UniversityManagementApp\UniversityManagementApp\bin\Rotativa.MVC.dll
+D:\DotNet\Assignment\University Management Project\UniversityManagementApp\UniversityManagementApp\obj\Debug\UniversityManagementApp.csprojResolveAssemblyReference.cache
+E:\Project\UniversityManagementApp\UniversityManagementApp\bin\UniversityManagementApp.dll.config
+E:\Project\UniversityManagementApp\UniversityManagementApp\bin\UniversityManagementApp.dll
+E:\Project\UniversityManagementApp\UniversityManagementApp\bin\UniversityManagementApp.pdb
+E:\Project\UniversityManagementApp\UniversityManagementApp\bin\Microsoft.Web.Infrastructure.dll
+E:\Project\UniversityManagementApp\UniversityManagementApp\bin\Newtonsoft.Json.dll
+E:\Project\UniversityManagementApp\UniversityManagementApp\bin\Microsoft.Web.Infrastructure.xml
+E:\Project\UniversityManagementApp\UniversityManagementApp\bin\System.Web.Helpers.xml
+E:\Project\UniversityManagementApp\UniversityManagementApp\bin\System.Web.Mvc.xml
+E:\Project\UniversityManagementApp\UniversityManagementApp\bin\System.Web.Optimization.xml
+E:\Project\UniversityManagementApp\UniversityManagementApp\bin\System.Web.Razor.xml
+E:\Project\UniversityManagementApp\UniversityManagementApp\bin\System.Web.WebPages.xml
+E:\Project\UniversityManagementApp\UniversityManagementApp\bin\System.Web.WebPages.Deployment.xml
+E:\Project\UniversityManagementApp\UniversityManagementApp\bin\System.Web.WebPages.Razor.xml
+E:\Project\UniversityManagementApp\UniversityManagementApp\bin\Antlr3.Runtime.pdb
+E:\Project\UniversityManagementApp\UniversityManagementApp\obj\Debug\UniversityManagementApp.csprojResolveAssemblyReference.cache
+E:\Project\UniversityManagementApp\UniversityManagementApp\obj\Debug\UniversityManagementApp.dll
+E:\Project\UniversityManagementApp\UniversityManagementApp\obj\Debug\UniversityManagementApp.pdb
+E:\ASP DOT NET\Projects\UniversityManagementApp\UniversityManagementApp\bin\UniversityManagementApp.dll.config
+E:\ASP DOT NET\Projects\UniversityManagementApp\UniversityManagementApp\bin\UniversityManagementApp.dll
+E:\ASP DOT NET\Projects\UniversityManagementApp\UniversityManagementApp\bin\UniversityManagementApp.pdb
+E:\ASP DOT NET\Projects\UniversityManagementApp\UniversityManagementApp\bin\Microsoft.Web.Infrastructure.dll
+E:\ASP DOT NET\Projects\UniversityManagementApp\UniversityManagementApp\bin\Newtonsoft.Json.dll
+E:\ASP DOT NET\Projects\UniversityManagementApp\UniversityManagementApp\bin\Microsoft.Web.Infrastructure.xml
+E:\ASP DOT NET\Projects\UniversityManagementApp\UniversityManagementApp\bin\System.Web.Helpers.xml
+E:\ASP DOT NET\Projects\UniversityManagementApp\UniversityManagementApp\bin\System.Web.Mvc.xml
+E:\ASP DOT NET\Projects\UniversityManagementApp\UniversityManagementApp\bin\System.Web.Optimization.xml
+E:\ASP DOT NET\Projects\UniversityManagementApp\UniversityManagementApp\bin\System.Web.Razor.xml
+E:\ASP DOT NET\Projects\UniversityManagementApp\UniversityManagementApp\bin\System.Web.WebPages.xml
+E:\ASP DOT NET\Projects\UniversityManagementApp\UniversityManagementApp\bin\System.Web.WebPages.Deployment.xml
+E:\ASP DOT NET\Projects\UniversityManagementApp\UniversityManagementApp\bin\System.Web.WebPages.Razor.xml
+E:\ASP DOT NET\Projects\UniversityManagementApp\UniversityManagementApp\bin\Antlr3.Runtime.pdb
+E:\ASP DOT NET\Projects\UniversityManagementApp\UniversityManagementApp\obj\Debug\UniversityManagementApp.csprojResolveAssemblyReference.cache
+E:\ASP DOT NET\Projects\UniversityManagementApp\UniversityManagementApp\obj\Debug\UniversityManagementApp.dll
+E:\ASP DOT NET\Projects\UniversityManagementApp\UniversityManagementApp\obj\Debug\UniversityManagementApp.pdb

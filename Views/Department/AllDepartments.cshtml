@@ -1,0 +1,89 @@
+﻿@using UniversityManagementApp.Models
+
+@{
+    ViewBag.Title = "AllDepartments";
+    List<Department> AllDepartments = ViewBag.Alldepartments;
+}
+
+@*<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>University Management System</title>
+
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <style type="text/css">
+        label.error {
+            color: red;
+            position: absolute;
+            left: 97%;
+            top: 5px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>*@
+
+    <div class="card shadow p-1 text-white  bg-dark col-md-10 mx-auto rounded">
+        @*Every title of Page will shown using following Div*@
+        <div class="card-header text-center bg-light text-primary">
+            <h2> All Dpartment</h2>
+
+        </div>
+
+        @*User will input all kind off data using this section*@
+        <br/>
+        <div class="mt-1 col-md-12 text-xl-right">
+            <a class="btn  btn-outline-secondary btn-outline-info" href="Department" role="button">Save A Department</a>
+        </div>
+        <div class="card-body">
+           
+            @if (AllDepartments != null)
+            {
+                <table class="table table-hover col-md-5 mx-auto">
+                    <thead >
+                    <tr>
+                        <th scope="col">Code</th>
+                        <th scope="col">Name</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @foreach (Department department in AllDepartments)
+                    {
+                        <tr>
+
+                            <td>@department.Code</td>
+                            <td>@department.Name</td>
+
+                        </tr>
+
+                    }
+
+
+                    </tbody>
+                </table>
+
+            }
+            else
+            {
+                <div class="alert alert-success" role="alert">
+                    <label class="error">No Department Available</label>
+                </div>
+            }
+
+
+
+
+
+        </div>
+
+    </div>
+
+    @*<script src="~/Scripts/jquery-3.0.0.min.js"></script>
+    <script src="~/Scripts/popper.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+</body>
+</html>*@
+

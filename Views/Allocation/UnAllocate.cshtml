@@ -1,0 +1,73 @@
+﻿@{
+    ViewBag.Title = "UnAllocate";
+    string message = ViewBag.message;
+}
+
+<div class="card shadow p-1 text-white  bg-dark col-md-10 mx-auto rounded">
+    @*Every title of Page will shown using following Div*@
+    <div class="card-header text-center bg-light text-primary">
+        <h2> Un Allocate Class Shedule</h2>
+    </div>
+
+    @*User will input all kind off data using this section*@
+    <br />
+    <div class="mt-1 col-md-12 text-xl-right">
+        <a class="btn  btn-outline-info" href="~/Allocation/History" role="button">Un Allocation History</a>
+    </div>
+    <div class="card-body">
+
+        @if (message != null)
+        {
+            if (message.Contains("Successful"))
+            {
+                <div class="alert alert-success text-center" role="alert">
+                    <i class="fa fa-check-circle" aria-hidden="true"> </i> @message
+                </div>
+            }
+            else
+            {
+                <div class="alert alert-danger text-center" role="alert">
+                    <i class="fa fa-times" aria-hidden="true"></i> @message
+                </div>
+            }
+
+
+        }
+
+
+        @using (Html.BeginForm())
+        {
+
+
+            <div class="mt-2 mx-auto col-md-5 text-xl-center">
+                <input class="btn btn-primary mt-2 mr-2" type="submit" value="Un Allocate" id="unAllocat">
+            </div>
+        }
+
+
+
+
+    </div>
+
+</div>
+@section scripts{
+    <script>
+
+        $(document).ready(function () {
+            $("#unAllocat").click(function (e) {
+                var d = confirm('Are Sure Want To Un Allocate Class Shedule? ');
+                if (!d) {
+                    e.preventDefault();
+                }
+
+
+            }); s
+        });
+
+    </script>
+}
+
+
+
+
+

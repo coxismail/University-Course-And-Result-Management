@@ -1,0 +1,223 @@
+﻿@{
+    ViewBag.Title = "RoomAllocation";
+    string message = ViewBag.messagge;
+}
+@using UniversityManagementApp.Models;
+@model  Allocation
+
+@section styles
+{
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
+
+    <style type="text/css">
+        .ui-timepicker-viewport {
+            padding-right: 0px;
+        }
+    </style>
+
+}
+
+<div class="card shadow p-1 text-white  bg-dark col-md-10 mx-auto rounded">
+    @*Every title of Page will shown using following Div*@
+    <div class="card-header text-center bg-light text-primary">
+        <h2> Room Allocation</h2>
+    </div>
+
+    @*User will input all kind off data using this section*@
+    <br />
+    <div class="mt-1 col-md-12 text-xl-right">
+        <a class="btn  btn-outline-info" href="~/Allocation/ViewRoomAllocation" role="button">View Class Shedule</a>
+    </div>
+    <div class="card-body">
+        @if (message != null)
+        {
+            if (message.Contains("Successful"))
+            {
+                <div class="alert alert-success text-center" role="alert">
+                    <i class="fa fa-check-circle" aria-hidden="true"></i>  @message
+                </div>
+            }
+            else
+            {
+                <div class="alert alert-danger text-center" role="alert">
+                    <i class="fa fa-times" aria-hidden="true"></i>   @message
+                </div>
+            }
+
+
+        }
+
+
+        @using (Html.BeginForm())
+        {
+
+            @*Department list*@
+            <div class="input-group mt-2 mx-auto col-md-5">
+                <div class="input-group-prepend">
+                    <label class="input-group-text" for="DepartmentCode">Department&nbsp;&nbsp;</label>
+                </div>
+                @Html.DropDownListFor(x => x.DepartmentCode, new SelectList(ViewBag.Departments, "Value", "Text"), new { @class = "form-control", required = "true" })
+                @Html.ValidationMessageFor(x => x.DepartmentCode, null, new { @class = "error", @id = "DepartmentCode-error" })
+            </div>
+
+
+            @*Cours Drop Down list list*@
+
+            <div class="input-group mt-2 mx-auto col-md-5">
+                <div class="input-group-prepend">
+                    <label class="input-group-text" for="CourseCode">Course &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                </div>
+
+                @Html.DropDownListFor(x => x.CourseCode, new SelectList(""), "--Select Course--", new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.CourseCode, null, new { @class = "error" })
+
+            </div>
+
+
+            // Day Dropdownlist
+            <div class="input-group mt-2 mx-auto col-md-5">
+                <div class="input-group-prepend">
+                    <label class="input-group-text" for="Day">Day &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                </div>
+                @Html.DropDownListFor(x => x.Day, new SelectList(ViewBag.Days, "Value", "Text"), new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.Day, null, new { @class = "error" })
+
+            </div>
+
+
+            // Room Dropdownlist
+            <div class="input-group mt-2 mx-auto col-md-5">
+                <div class="input-group-prepend">
+                    <label class="input-group-text" for="RoomNo">Room No&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                </div>
+                @Html.DropDownListFor(x => x.RoomNo, new SelectList(ViewBag.RoomNo, "Value", "Text"), new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.RoomNo, null, new { @class = "error" })
+
+            </div>
+
+
+
+            // From Time
+            <div class="input-group mt-2 mx-auto col-md-5">
+                <div class="input-group-prepend">
+                    <label for="StartTime" class="input-group-text">From &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                </div>
+
+                @Html.TextBoxFor(x => x.StartTime, null, new { @class = "form-control time start" })
+                @Html.ValidationMessageFor(x => x.StartTime, null, new { @class = "error" })
+
+            </div>
+
+
+
+            @*To Time field*@
+            <div class="input-group mt-2 mx-auto col-md-5">
+                <div class="input-group-prepend">
+                    <label for="To" class="input-group-text">To&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                </div>
+                @Html.TextBoxFor(x => x.EndTime, null, new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.EndTime, null, new { @class = "error", @id = "To-error" })
+            </div>
+
+
+
+            <div class="mt-2 mx-auto col-md-5 text-xl-right">
+                <input class="btn btn-primary mt-2 mr-2 submit" type="submit" value="Allocate" onclick="Compare()">
+            </div>
+        }
+
+    </div>
+
+</div>
+
+
+@section scripts
+{
+    <script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
+
+    <script type="text/javascript">
+        $('#StartTime').timepicker({
+            timeFormat: 'h:mmp',
+            interval: 60,
+            minTime: '9',
+            maxTime: '6:00pm',
+            defaultTime: '09',
+            startTime: '09:00am',
+            dynamic: true,
+            dropdown: true,
+            scrollbar: false
+        });
+        $('#EndTime').timepicker({
+            timeFormat: 'h:mmp',
+            interval: 60,
+            minTime: '9',
+            maxTime: '6:00pm',
+            defaultTime: '10',
+            startTime: '10:00',
+            dynamic: true,
+            dropdown: true,
+            scrollbar: false
+        });
+
+
+    </script>
+
+    <script>
+        $(document).ready(function() {
+            $("#DepartmentCode").change(function() {
+                // Get Couse Code
+                var DepartmentCode = $("#DepartmentCode").val();
+                var json = { departmentCode: DepartmentCode };
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("GetCourseList", "Allocation")',
+                    contentType: "application/json; charset=utf-8",
+                    cache: false,
+                    data: JSON.stringify(json),
+                    success: function(data) {
+
+                        $("#CourseCode").empty();
+                        $("#CourseCode").append("<option value=> --Select Course-- </option>");
+                        $.each(data, function(index, value) {
+                            $("#CourseCode").append("<option value='" + value.Code + "'>" + value.Code + "</option>");
+                        });
+
+                    }
+                });
+            });
+        });
+
+
+    </script>
+
+    <script type="text/javascript">
+        function Compare(e) {
+            var strStartTime = document.getElementById("StartTime").value;
+            var strEndTime = document.getElementById("EndTime").value;
+            var startTime = new Date().setHours(GetHours(strStartTime), GetMinutes(strStartTime), 0);
+            var endTime = new Date(startTime);
+            endTime = endTime.setHours(GetHours(strEndTime), GetMinutes(strEndTime), 0);
+            if (startTime > endTime) {
+                alert("Start Time is greater than End time");
+                }
+            if (startTime == endTime) {
+                alert("Start Time equals End time");
+            }
+            if (startTime < endTime) {
+                alert("Start Time is less than End time");
+            }
+        }
+
+        function GetHours(d) {
+            var h = parseInt(d.split(':')[0]);
+            if (d.split(':')[1].split(' ')[1] == "PM") {
+                h = h + 12;
+            }
+            return h;
+        }
+
+        function GetMinutes(d) {
+            return parseInt(d.split(':')[1].split(' ')[0]);
+        }
+    </script>
+}

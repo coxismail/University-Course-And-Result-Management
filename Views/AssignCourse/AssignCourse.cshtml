@@ -1,0 +1,336 @@
+﻿@{
+    ViewBag.Title = "AssignCourse";
+
+    string message = ViewBag.message;
+}
+@using UniversityManagementApp.Models;
+@model AssignCourse
+
+
+@*<!DOCTYPE html>
+    <html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <title>University Management System</title>
+        <link href="~/Content/font-awesome.css" rel="stylesheet" />
+        <link href="~/Content/font-awesome.min.css" rel="stylesheet" />
+        <link href="~/Content/bootstrap.css" rel="stylesheet" />
+
+        <style type="text/css">
+            span.error {
+                color: red;
+                position: absolute;
+                left: 97%;
+                top: 5px;
+                padding-left: 10px;
+                background-color: whitesmoke;
+                width: 73%;
+            }
+        </style>
+    </head>
+    <body>*@
+
+<div class="card shadow p-1 text-white  bg-dark col-md-10 mx-auto rounded">
+    @*Every title of Page will shown using following Div*@
+    <div class="card-header text-center bg-light text-primary">
+        <h2> Assign Course</h2>
+    </div>
+
+    @*User will input all kind off data using this section*@
+    <br />
+    <div class="mt-1 col-md-12 text-xl-right">
+        <a class="btn  btn-outline-info" href="~/CourseStatics/CourseStatics" role="button">View Assigned course</a>
+    </div>
+    <div class="card-body">
+        @if (message != null)
+        {
+            if (message.Contains("Successful"))
+            {
+                <div class="alert alert-success text-center" role="alert">
+                    <i class="fa fa-check-circle" aria-hidden="true"></i>  @message
+                </div>
+            }
+            else
+            {
+                <div class="alert alert-danger text-center" role="alert">
+                    <i class="fa fa-times" aria-hidden="true"></i>   @message
+                </div>
+            }
+
+
+        }
+
+
+        @using (Html.BeginForm())
+        {
+
+            @*Department list*@
+            <div class="input-group mt-2 mx-auto col-md-5">
+                <div class="input-group-prepend">
+                    <label class="input-group-text" for="DepartmentCode">Department&nbsp;&nbsp;</label>
+                </div>
+                @Html.DropDownListFor(x => x.DepartmentCode, new SelectList(ViewBag.Departments, "Value", "Text"), new { @class = "form-control", required = "true" })
+                @Html.ValidationMessageFor(x => x.DepartmentCode, null, new { @class = "error", @id = "DepartmentCode-error" })
+            </div>
+
+
+            @*Teacher list*@
+
+            <div class="input-group mt-2 mx-auto col-md-5">
+                <div class="input-group-prepend">
+                    <label class="input-group-text" for="TeacheraId">Teacher&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                </div>
+
+                @Html.DropDownListFor(x => x.TeacherId, new SelectList(""), "--Select Teacher--", new { @class = "form-control", required = "true" })
+                @Html.ValidationMessageFor(x => x.TeacherId, null, new { @class = "error" })
+
+            </div>
+            @Html.TextBoxFor(x => x.TeacherName, null, new { @class = "form-control d-none" })
+            // credit to taken
+            <div class="input-group mt-2 mx-auto col-md-5">
+                <div class="input-group-prepend">
+                    <label for="CreditbeaTaken" class="input-group-text">Credit&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                </div>
+
+                @Html.TextBoxFor(x => x.CreditbeTaken, null, new { @placeholder = "Credit to be Taken ", @class = "form-control", disabled = "true" })
+
+            </div>
+
+
+            // Remaining credit
+
+            <div class="input-group mt-2 mx-auto col-md-5">
+                <div class="input-group-prepend">
+                    <label for="RemainingCredit" class="input-group-text">Remaining &nbsp;&nbsp;&nbsp;&nbsp;</label>
+                </div>
+
+                @Html.TextBoxFor(x => x.RemainingCredit, null, new { @placeholder = "", @class = "form-control", disabled = "true" })
+
+            </div>
+
+
+            // Course Dropdownlist
+            <div class="input-group mt-2 mx-auto col-md-5">
+                <div class="input-group-prepend">
+                    <label class="input-group-text" for="CourseCode">Course &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                </div>
+                @Html.DropDownListFor(x => x.CourseCode, new SelectList(""), "--Select Course--", new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.CourseCode, null, new { @class = "error" })
+
+            </div>
+
+
+            @*Course Name field*@
+            <div class="input-group mt-2 mx-auto col-md-5">
+                <div class="input-group-prepend">
+                    <label for="Name" class="input-group-text">Course Name&nbsp;</label>
+                </div>
+                @Html.TextBoxFor(x => x.CourseName, null, new { @class = "form-control", disabled = "true" })
+            </div>
+
+
+            @* course Credit *@
+            <div class="input-group mt-2 mx-auto col-md-5">
+                <div class="input-group-prepend">
+                    <label for="Credit" class="input-group-text">Credit&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                </div>
+                @Html.TextBoxFor(x => x.Credit, null, new { @class = "form-control", disabled = "true" })
+            </div>
+
+
+            <div class="mt-2 mx-auto col-md-5 text-xl-right">
+                <input class="btn btn-primary mt-2 mr-2" type="submit" value="Assign" id="Check">
+            </div>
+        }
+
+    </div>
+
+</div>
+
+@*<script src="~/Scripts/jquery-3.0.0.min.js"></script>
+    <script src="~/Scripts/popper.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>*@
+
+@section scripts{
+    <script>
+
+        $(document).ready(function () {
+            $("#DepartmentCode").change(function () {
+                $("#CreditbeTaken").val(null);
+                $("#RemainingCredit").val(null);
+                $("#CourseName").val(null);
+                $("#Credit").val(null);
+                var DepartmentCode = $("#DepartmentCode").val();
+                var json = { departmentCode: DepartmentCode };
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("GetTeacherlist", "AssignCourse")',
+                    contentType: "application/json; charset=utf-8",
+                    cache: false,
+                    data: JSON.stringify(json),
+                    success: function (data) {
+
+                        $("#TeacherId").empty();
+
+                        $("#TeacherId").append("<option value=>--Select Teacher--</option>");
+
+                        $.each(data, function (index, value) {
+
+                            $("#TeacherId").append("<option value='" + value.Id + "'>" + value.Name + "</option>");
+
+                        });
+
+                    }
+                });
+                // Get Couse Code
+                var DepartmentCode = $("#DepartmentCode").val();
+                var json = { departmentCode: DepartmentCode };
+
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("GetCourseList", "AssignCourse")',
+                    contentType: "application/json; charset=utf-8",
+                    cache: false,
+                    data: JSON.stringify(json),
+                    success: function (data) {
+
+                        $("#CourseCode").empty();
+                        $("#CourseCode").append("<option value=> --Select Course-- </option>");
+                        $.each(data, function (index, value) {
+
+                            $("#CourseCode").append("<option value='" + value.Code + "'>" + value.Code + "</option>");
+                        });
+
+                    }
+                });
+
+
+
+
+            });
+
+            @*});
+
+
+
+
+
+    </script>
+
+    <script>
+
+
+        // Change Teacher Action Code goes here
+        $(document).ready(function () {*@
+
+            $("#TeacherId").change(function () {
+                $("#CreditbeTaken").empty();
+                $("#RemainingCredit").empty();
+                var teacher = $("#TeacherId").val();
+                if (teacher != "--Select Teacher--") {
+                    $("#TeacherName").val($("#TeacherId option:selected").text());
+                  var TeacherId = $("#TeacherId").val();
+                    var credittotaken = $("#CreditbeTaken").val();
+                    var json = { teacherId: TeacherId };
+                    $.ajax({
+                        type: "POST",
+                        url: '@Url.Action("GetTeacherCredit", "AssignCourse")',
+                        contentType: "application/json; charset=utf-8",
+                        cache: false,
+                        data: JSON.stringify(json),
+                        success: function (data) {
+                            $("#CreditbeTaken").empty();
+                            if (data != null) {
+                                credittotaken = data.CreditbeTaken;
+                                $("#CreditbeTaken").val(credittotaken);
+                            }
+                            $("#CreditbeTaken").empty();
+
+                        }
+                    });
+
+
+                    //
+                    var json = { TeacherId: TeacherId };
+                    $.ajax({
+                        type: "POST",
+                        url: '@Url.Action("GetTakenCredit")',
+                        contentType: "application/json; charset=utf-8",
+
+                        data: JSON.stringify(json),
+                        success: function (data) {
+                            $("#RemainingCredit").empty();
+                            if (data != null) {
+                                var x = data.Credit;
+                                var y = credittotaken;
+                                $("#RemainingCredit").val(y - x);
+                            }
+                            //else {
+                            //    var m = credittotaken;
+                            //    $("#RemainingCredit").val(m);
+                            //}
+
+
+                        }
+                    });
+
+                }
+            });
+
+
+            // Change Course
+            $("#CourseCode").change(function () {
+                var CourseCode = $("#CourseCode").val();
+                var json = { courseCode: CourseCode };
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("GetCourseNameAndCredit")',
+                    contentType: "application/json; charset=utf-8",
+
+                    data: JSON.stringify(json),
+                    success: function (data) {
+
+                        if (data != null) {
+
+                            $("#CourseName").val(data.Name);
+                            $("#Credit").val(data.Credit);
+                        } else {
+                            alert("Something Went Wron Please Try Again");
+                        }
+
+
+                    }
+                });
+
+            });
+
+
+            //});
+            //// Check crdit
+
+            //$(document).ready(function () {
+            $("#Check").click(function (e) {
+
+                var x = parseInt($("#RemainingCredit").val());
+                var y = parseInt($("#Credit").val());
+
+                if (x < y) {
+                    var d = confirm('His Remaining Credit is Less Click OK to confirm ');
+                    if (!d) {
+                        e.preventDefault();
+                    }
+                }
+                else {
+                    //alert("Please Select All Fileds");
+                    //e.preventDefault();
+                }
+            });
+        });
+
+    </script>
+}
+@*</body>
+    </html>*@

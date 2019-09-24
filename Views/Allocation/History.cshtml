@@ -1,0 +1,70 @@
+﻿@using UniversityManagementApp.Models
+
+@{
+    ViewBag.Title = "History";
+    List<Allocation> listofHistory = ViewBag.history;
+}
+
+<div class="card shadow p-1 text-white  bg-dark col-md-10 mx-auto rounded">
+    @*Every title of Page will shown using following Div*@
+    <div class="card-header text-center bg-light text-primary">
+        <h2> Un Allocation History</h2>
+
+    </div>
+
+    @*User will input all kind off data using this section*@
+    <br />
+    <div class="mt-1 col-md-12 text-xl-right">
+        <a class="btn  btn-outline-secondary btn-outline-info" href="~/Allocation/ViewRoomAllocation" role="button">View Class Shedule</a>
+    </div>
+    <div class="card-body">
+
+        @if (listofHistory != null)
+    {
+        <table class="table table-hover col-md-12 mx-auto">
+            <thead>
+                <tr>
+                    <th scope="col"> Course Code</th>
+                    <th scope="col">Room No</th>
+                    <th scope="col"> Day</th>
+                    <th scope="col">Start Time</th>
+                    <th scope="col"> Ent Time</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (Allocation history in listofHistory)
+                {
+                    <tr>
+
+                        <td>@history.CourseCode</td>
+                        <td>@history.RoomNo</td>
+                        <td>@history.Day</td>
+                        <td>@history.StartTime</td>
+                        <td>@history.EndTime</td>
+
+                    </tr>
+
+                }
+
+
+                </tbody>
+            </table>
+
+        }
+        else
+        {
+            <div class="alert alert-success" role="alert">
+                <label class="error">No Department Available</label>
+            </div>
+        }
+
+
+
+
+
+    </div>
+
+</div>
+
+
+

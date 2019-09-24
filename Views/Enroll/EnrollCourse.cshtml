@@ -1,0 +1,208 @@
+﻿@{
+    ViewBag.Title = "EnrollCourse";
+    string message = ViewBag.message;
+}
+@using UniversityManagementApp.Models;
+@model Enroll
+@section Styles {
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+    <style type="text/css">
+        #date {
+            cursor: not-allowed;
+        }
+    </style>
+}
+
+
+
+
+
+
+
+
+
+
+<div class="card shadow p-1 text-white  bg-dark col-md-10 mx-auto rounded">
+    @*Every title of Page will shown using following Div*@
+    <div class="card-header text-center bg-light text-primary">
+        <h2> Enroll in Course</h2>
+    </div>
+
+    @*User will input all kind off data using this section*@
+    <br />
+    <div class="mt-1 col-md-12 text-xl-right">
+        <a class="btn  btn-outline-info" href="#" role="button"> View</a>
+    </div>
+    <div class="card-body">
+        @if (message != null)
+    {
+        if (message.Contains("Successful"))
+        {
+            <div class="alert alert-success text-center" role="alert">
+                <i class="fa fa-check-circle" aria-hidden="true"></i>  @message
+            </div>
+        }
+        else
+        {
+            <div class="alert alert-danger text-center" role="alert">
+                <i class="fa fa-times" aria-hidden="true"></i>   @message
+            </div>
+        }
+
+
+    }
+
+
+        @using (Html.BeginForm())
+        {
+
+            @*Reg No list*@
+            <div class="input-group mt-2 mx-auto col-md-5">
+                <div class="input-group-prepend">
+                    <label class="input-group-text" for="RegNo">Reg No : &nbsp;&nbsp;</label>
+                </div>
+                @Html.DropDownListFor(x => x.RegNo, new SelectList(ViewBag.RegNo, "Value", "Text"), new { @class = "form-control", required = "true" })
+                @Html.ValidationMessageFor(x => x.RegNo, null, new { @class = "error", @id = "RegNo-error" })
+            </div>
+
+
+
+            // Name of Student just view
+            <div class="input-group mt-2 mx-auto col-md-5">
+                <div class="input-group-prepend">
+                    <label for="Name" class="input-group-text">Name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                </div>
+
+                @Html.TextBoxFor(x => x.Name, null, new { @placeholder = "Name of The Student ", @class = "form-control", disabled = "true" })
+
+            </div>
+            // Email of Student just view
+            <div class="input-group mt-2 mx-auto col-md-5">
+                <div class="input-group-prepend">
+                    <label for="Email" class="input-group-text">Email&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                </div>
+
+                @Html.TextBoxFor(x => x.Email, null, new { @placeholder = "name@example.com", @class = "form-control", disabled = "true" })
+
+            </div>
+
+            // Department of Student just view
+            <div class="input-group mt-2 mx-auto col-md-5">
+                <div class="input-group-prepend">
+                    <label for="Department" class="input-group-text">Department</label>
+                </div>
+
+                @Html.TextBoxFor(x => x.Department, null, new { @placeholder = "", @class = "form-control", disabled = "true" })
+
+
+
+            </div>
+
+            // Course Dropdownlist
+            <div class="input-group mt-2 mx-auto col-md-5">
+                <div class="input-group-prepend">
+                    <label class="input-group-text" for="CourseCode">Course &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                </div>
+                @Html.DropDownListFor(x => x.CourseCode, new SelectList(""), "--Select Course--", new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.CourseCode, null, new { @class = "error" })
+
+            </div>
+            @*Date Picker field*@
+            <div class="input-group mt-2 mx-auto col-md-5">
+                <div class="input-group-prepend">
+                    <label for="Date" class="input-group-text">Date &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                </div>
+                @Html.TextBoxFor(x => x.Date, new { @class = "form-control", @placeholder = "YYYY-MM-DD", @readonly = "true" })
+                @Html.ValidationMessageFor(x => x.Date, null, new { @class = "error", @id = "Date-error" })
+            </div>
+
+
+
+            <div class="mt-2 mx-auto col-md-5 text-xl-right">
+                <input class="btn btn-primary mt-2 mr-2" type="submit" value="Enroll" id="Check">
+            </div>
+        }
+
+    </div>
+
+</div>
+
+@section scripts
+{
+    <script>
+
+        $(document).ready(function() {
+
+            $("#RegNo").change(function() {
+                var regNo = $("#RegNo").val();
+                if (regNo!= "--Choice--") {
+                    
+               
+                var json = { regNo: regNo };
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("GetStudentbyregNo", "Enroll")',
+                    contentType: "application/json; charset=utf-8",
+                    cache: false,
+                    data: JSON.stringify(json),
+                    success: function(data) {
+                        $("#Name").empty();
+                        $("#Email").empty();
+                        $("#Department").empty();
+                        if (data != null) {
+                            $("#Name").val(data.Name);
+                            $("#Email").val(data.Email);
+                            $("#Department").val(data.Department);
+                            if (data.Department!=null) {
+                              var json = { DepartmentCode: data.DepartmentCode };
+                            $.ajax({
+                                type: "POST",
+                                url: '@Url.Action("GetCourseList", "Enroll")',
+                                contentType: "application/json; charset=utf-8",
+                                cache: false,
+                                data: JSON.stringify(json),
+                                success: function (data) {
+
+                                    $("#CourseCode").empty();
+                                    $("#CourseCode").append("<option value=> --Select Course-- </option>");
+                                    $.each(data, function (index, value) {
+
+                                        $("#CourseCode").append("<option value='" + value.Code + "'>" + value.Name + "</option>");
+                                    });
+
+                                }
+                            });
+                        }
+                        }  // first action end here with not null data
+                    }
+
+                });
+                }
+            });
+     
+    });
+    </script>
+
+
+
+
+
+
+
+
+
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script type="text/javascript">
+
+        $(function () {
+            $("#Date").datepicker({
+                dateFormat: "yy-mm-dd",
+                changeMonth: true,
+                changeYear: true
+            });
+            $("#Date").datepicker("setDate", new Date());
+        });
+    </script>
+}
